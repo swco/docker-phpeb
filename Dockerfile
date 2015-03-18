@@ -5,12 +5,12 @@ WORKDIR /build
 VOLUME /build
 
 RUN yum groupinstall -y 'Development Tools' && \
-    yum install -y vim sudo cmake php-devel && \
+    yum install -y vim cmake php-devel && \
     yum clean all
 
 ENV NO_INTERACTION=1
 
 ENTRYPOINT ["/setup.sh"]
-CMD phpize && ./configure && make && make test
+CMD ["phpize && ./configure && make && make test"]
 
 COPY setup.sh /setup.sh
