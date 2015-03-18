@@ -1,11 +1,10 @@
-FROM centos:5
+FROM centos:6
 MAINTAINER Michael Daffin <james1479@gmail.com>
 
 WORKDIR /build
 VOLUME /build
 
-RUN echo "multilib_policy=best" >> /etc/yum.conf && \
-    yum groupinstall -y 'Development Tools' && \
+RUN yum groupinstall -y 'Development Tools' && \
     yum install -y vim sudo cmake php-devel && \
     yum clean all
 
