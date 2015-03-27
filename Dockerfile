@@ -13,7 +13,7 @@ RUN echo "multilib_policy=best" >> /etc/yum.conf && \
     yum install -y epel-release && \
     yum install -y vim boost-devel cmake php-devel \
                    autoconf automake binutils gcc gcc-c++ gettext \
-                   libtool shtool make pkgconfig strace swig && \
+                   libtool shtool make pkgconfig strace swig php-pear && \
     yum clean all
 
 COPY setup.sh /setup.sh
