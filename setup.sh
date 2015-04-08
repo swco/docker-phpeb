@@ -4,6 +4,6 @@ uid=$(stat -c "%u" .)
 gid=$(stat -c "%g" .)
 
 groupadd -g $gid builder
-useradd -g $gid -u $uid builder
+useradd -g $gid -u $uid builder -G wheel
 
-su builder -c "$@"
+sudo -u builder $@
