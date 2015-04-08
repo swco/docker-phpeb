@@ -6,4 +6,11 @@ gid=$(stat -c "%g" .)
 groupadd -g $gid builder
 useradd -g $gid -u $uid builder -G wheel
 
-sudo -u builder $@
+if [[ "$@" == "bash" || "$@" == "sh" ]]; then
+  sudo -u builder -s
+  exit
+fi
+
+sudo -u builder -s -- <<EOF
+$@
+EOF
